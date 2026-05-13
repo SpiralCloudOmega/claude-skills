@@ -414,6 +414,7 @@ def main():
     for domain_key, skills in skills_by_domain.items():
         top_level = [s for s in skills if not s["is_sub_skill"]]
         sub_skills = [s for s in skills if s["is_sub_skill"]]
+        top_level_names = {s["name"] for s in top_level}
 
         for skill in top_level:
             slug = slugify(skill["name"])
@@ -429,6 +430,39 @@ def main():
                 child_slug = slugify(child["name"])
                 child_content = generate_skill_page(child, domain_key)
                 child_path = os.path.join(DOCS_DIR, "skills", domain_key, f"{slug}-{child_slug}.md")
+                with open(child_path, "w", encoding="utf-8") as f:
+                    f.write(child_content)
+                total += 1
+
+        # Render orphan sub-skills (sub-skills whose parent is a plugin folder,
+        # not a top-level skill at <domain>/skills/<name>/). Without this,
+        # standalone-only plugins like executive-mentor, agenthub, autoresearch-agent,
+        # playwright-pro, self-improving-agent, c-level-agents, and llm-wiki have
+        # their sub-skills silently dropped (~79 pages missing from the docs site).
+        orphan_sub_skills = [s for s in sub_skills if s["parent"] not in top_level_names]
+        # Group by plugin parent
+        by_parent = {}
+        for s in orphan_sub_skills:
+            by_parent.setdefault(s["parent"], []).append(s)
+        for parent, children in by_parent.items():
+            parent_slug = slugify(parent)
+            # If a child has the same name as parent, it's the plugin's index skill;
+            # render as <parent>.md (preserves existing URLs like executive-mentor.md).
+            index_sub = next((s for s in children if s["name"] == parent), None)
+            if index_sub:
+                page_content = generate_skill_page(index_sub, domain_key)
+                page_path = os.path.join(DOCS_DIR, "skills", domain_key, f"{parent_slug}.md")
+                with open(page_path, "w", encoding="utf-8") as f:
+                    f.write(page_content)
+                total += 1
+            # Render non-index children as <parent>-<child>.md
+            # (preserves existing URLs like executive-mentor-challenge.md).
+            for child in children:
+                if child["name"] == parent:
+                    continue
+                child_slug = slugify(child["name"])
+                child_content = generate_skill_page(child, domain_key)
+                child_path = os.path.join(DOCS_DIR, "skills", domain_key, f"{parent_slug}-{child_slug}.md")
                 with open(child_path, "w", encoding="utf-8") as f:
                     f.write(child_content)
                 total += 1
