@@ -149,8 +149,8 @@ def body_judge_panel():
 const ANGLES = args?.angles ?? ['conservative', 'aggressive', 'contrarian']
 
 phase('Draft')
-const drafts = await parallel(ANGLES.map((a, i) => () =>
-  agent(`Produce a plan. Take a strictly ${a} approach.`, { label: `draft:${i + 1}`, model: 'sonnet' })))
+const drafts = (await parallel(ANGLES.map((a, i) => () =>
+  agent(`Produce a plan. Take a strictly ${a} approach.`, { label: `draft:${i + 1}`, model: 'sonnet' })))).filter(Boolean)
 
 phase('Score')
 const SCORE_SCHEMA = { type: 'object', properties: { score: { type: 'number' } }, required: ['score'] }
