@@ -76,10 +76,10 @@ Account
 ```
 [Platform]_[Objective]_[Audience]_[Offer]_[Date]
 
-Examples:
-META_Conv_Lookalike-Customers_FreeTrial_2024Q1
+Examples (use the current year/quarter — {YYYY}/{Qn} are placeholders):
+META_Conv_Lookalike-Customers_FreeTrial_{YYYY}Q1
 GOOG_Search_Brand_Demo_Ongoing
-LI_LeadGen_CMOs-SaaS_Whitepaper_Mar24
+LI_LeadGen_CMOs-SaaS_Whitepaper_{MonYY}
 ```
 
 ### Budget Allocation
@@ -227,9 +227,19 @@ LI_LeadGen_CMOs-SaaS_Whitepaper_Mar24
 
 ## Reporting & Analysis
 
+### Tools
+
+| Tool | Invocation | Output |
+|---|---|---|
+| ROAS calculator | `python3 scripts/roas_calculator.py --spend 5000 --revenue 18000 --conversions 120 --clicks 2400 --margin 0.7` (or `--file metrics.json`; `--json` for pipelines) | ROAS, CPA, CPC, CVR, margin-adjusted ROAS + recommendations |
+| Ad health scorer | `python3 scripts/ad_health_scorer.py --checks checks.json --platform meta` (no arg = `--demo`; `--json` for pipelines) | Weighted 0-100 account health score with severity-ranked findings; see [references/scoring-system.md](references/scoring-system.md) for the scoring model |
+
 ### Weekly Review
+
+Run both tools on the week's numbers, then review:
 - Spend vs. budget pacing
-- CPA/ROAS vs. targets
+- CPA/ROAS vs. targets — from `roas_calculator.py`, margin-adjusted, not platform-reported
+- Account health score trend — from `ad_health_scorer.py`; investigate any category that dropped
 - Top and bottom performing ads
 - Audience performance breakdown
 - Frequency check (fatigue risk)

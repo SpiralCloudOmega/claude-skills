@@ -1,6 +1,6 @@
 ---
 name: "run"
-description: "One-shot lifecycle command that chains init → baseline → spawn → eval → merge in a single invocation."
+description: "One-shot lifecycle command that chains init → baseline → spawn → eval → merge in a single invocation. Use when the user runs /hub:run or asks to execute a full AgentHub competition end-to-end."
 command: /hub:run
 ---
 

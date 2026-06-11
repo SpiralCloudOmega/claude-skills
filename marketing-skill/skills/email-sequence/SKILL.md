@@ -74,6 +74,16 @@ What to measure and benchmarks
 
 ---
 
+## Tools
+
+| Tool | Invocation | Output |
+|---|---|---|
+| Sequence analyzer | `python3 scripts/sequence_analyzer.py --file sequence.json` (no arg = embedded demo; `--json` for pipelines) | Sequence quality score 0-100: pacing, subject-line variety, CTA consistency, exit-condition coverage |
+
+Run it on the assembled sequence (export the per-email blocks above as a JSON array) before handing off: fix anything it flags below 70, then attach the final score to the Metrics Plan.
+
+---
+
 ## Task-Specific Questions
 
 1. What triggers entry to this sequence?
