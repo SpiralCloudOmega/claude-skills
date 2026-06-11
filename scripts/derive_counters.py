@@ -84,7 +84,6 @@ def derive(root: Path) -> dict:
         "domains": 0,
     }
     domains = set()
-    root_scripts = root / "scripts"
 
     for path in canonical_walk(root):
         rel = path.relative_to(root)
@@ -99,7 +98,7 @@ def derive(root: Path) -> dict:
             counters["plugins_on_disk"] += 1
         elif path.suffix == ".py":
             # Skill/plugin automation tools: every .py except repo-root scripts/.
-            if root_scripts not in path.parents or len(parts) < 2 or parts[0] != "scripts":
+            if parts[0] != "scripts":
                 counters["python_tools"] += 1
         elif path.suffix == ".md":
             if "references" in parts[:-1]:

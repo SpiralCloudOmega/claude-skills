@@ -21,6 +21,13 @@ The following exist on the maintainer's disk but are excluded from the public Gi
 - `.autoresearch/` — autoresearch agent workspace
 - `AUDIT_REPORT.md` — internal audit snapshots
 
+**Distinct from the above:** the top-level `audit/` directory (e.g.
+`audit/newgen-2026-06/`) is an **intentional, public** audit record — rubric +
+per-domain reports with per-skill verification criteria that follow-up PRs use
+as acceptance gates. It is excluded from headline counters by
+`scripts/derive_counters.py`, but it is committed and visible to cloners.
+`AUDIT_REPORT.md` (gitignored, above) is the older internal-snapshot format.
+
 In-repo references to paths under these folders (e.g. `documentation/implementation/...`) resolve locally for the maintainer but appear as dead links on GitHub. This is intentional.
 
 ## Navigation Map
