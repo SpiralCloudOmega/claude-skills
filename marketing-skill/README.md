@@ -39,22 +39,22 @@ npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill --agent
 
 ```bash
 # Content Creator
-npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/content-creator
+npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/skills/content-creator
 
 # Demand Generation & Acquisition
-npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/marketing-demand-acquisition
+npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/skills/marketing-demand-acquisition
 
 # Product Marketing Strategy
-npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/marketing-strategy-pmm
+npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/skills/marketing-strategy-pmm
 
 # App Store Optimization
-npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/app-store-optimization
+npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/skills/app-store-optimization
 
 # Social Media Analyzer
-npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/social-media-analyzer
+npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/skills/social-media-analyzer
 
 # Campaign Analytics
-npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/campaign-analytics
+npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/skills/campaign-analytics
 ```
 
 **Supported Agents:** Claude Code, Cursor, VS Code, Copilot, Goose, Amp, Codex
