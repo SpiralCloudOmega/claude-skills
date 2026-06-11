@@ -239,7 +239,7 @@ See [attribution-guide.md](references/attribution-guide.md) for detailed setup.
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `calculate_cac.py` | Calculate blended and channel CAC | `python scripts/calculate_cac.py --spend 40000 --customers 50` |
+| `calculate_cac.py` | Calculate blended and channel CAC | `python scripts/calculate_cac.py` (no args — edit the `example_data` channel table in `main()` with your spend/customer numbers first) |
 
 ### HubSpot Integration
 
