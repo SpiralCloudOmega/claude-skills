@@ -551,6 +551,9 @@ def main():
                         help="Output format (flag form, overrides the positional).")
     parser.add_argument("--seed", type=int, default=42,
                         help="RNG seed for deterministic persona names (default: 42).")
+    parser.add_argument("--sample", action="store_true",
+                        help="Generate the bundled sample persona and exit 0 "
+                             "(same as the default run; kept for harness smoke tests).")
     args = parser.parse_args()
     output = args.output_flag or args.format
 

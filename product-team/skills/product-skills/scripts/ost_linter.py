@@ -29,6 +29,8 @@ Input JSON (see --sample):
   }
 
 Exit codes: 0 clean (warnings allowed) · 2 violations found · 3 unreadable input.
+Exception: `--sample` always exits 0 — it is a smoke test, and the bundled tree
+deliberately contains one O2 and one O4 violation so the report output is visible.
 Stdlib only, deterministic.
 """
 

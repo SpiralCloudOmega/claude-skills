@@ -269,6 +269,10 @@ def main() -> int:
 
     as_of = parse_date(args.as_of) if args.as_of else max(
         (i["resolved"] or i["created"]) for i in issues)
+    if as_of is None:
+        print(f"ERROR: --as-of '{args.as_of}' is not a valid YYYY-MM-DD date.",
+              file=sys.stderr)
+        return 2
     report = flow_report(issues, as_of, args.sle_days, args.forecast, args.seed)
     print(json.dumps(report, indent=2))
     return 0

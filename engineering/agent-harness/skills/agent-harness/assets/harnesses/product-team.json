@@ -21,12 +21,17 @@
         {
           "script": "product-team/agile-product-owner/skills/agile-product-owner/scripts/user_story_generator.py",
           "wired": true,
-          "supports_sample": false,
+          "supports_sample": true,
           "verification": [
             {
               "cmd": "python3 product-team/agile-product-owner/skills/agile-product-owner/scripts/user_story_generator.py --help",
               "expect_exit": 0,
               "kind": "smoke"
+            },
+            {
+              "cmd": "python3 product-team/agile-product-owner/skills/agile-product-owner/scripts/user_story_generator.py --sample",
+              "expect_exit": 0,
+              "kind": "sample"
             }
           ]
         }
@@ -587,12 +592,17 @@
         {
           "script": "product-team/skills/ux-researcher-designer/scripts/persona_generator.py",
           "wired": true,
-          "supports_sample": false,
+          "supports_sample": true,
           "verification": [
             {
               "cmd": "python3 product-team/skills/ux-researcher-designer/scripts/persona_generator.py --help",
               "expect_exit": 0,
               "kind": "smoke"
+            },
+            {
+              "cmd": "python3 product-team/skills/ux-researcher-designer/scripts/persona_generator.py --sample",
+              "expect_exit": 0,
+              "kind": "sample"
             }
           ]
         }

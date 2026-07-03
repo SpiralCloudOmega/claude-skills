@@ -336,6 +336,9 @@ def main():
                              "a sprint from that backlog (default: epic).")
     parser.add_argument("capacity", nargs="?", type=int, default=30,
                         help="Sprint capacity in story points (sprint mode, default: 30).")
+    parser.add_argument("--sample", action="store_true",
+                        help="Break the bundled sample epic into stories and exit 0 "
+                             "(same as the default epic mode; kept for harness smoke tests).")
     args = parser.parse_args()
 
     generator = UserStoryGenerator()
