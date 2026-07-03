@@ -21,12 +21,17 @@
         {
           "script": "product-team/agile-product-owner/skills/agile-product-owner/scripts/user_story_generator.py",
           "wired": true,
-          "supports_sample": false,
+          "supports_sample": true,
           "verification": [
             {
               "cmd": "python3 product-team/agile-product-owner/skills/agile-product-owner/scripts/user_story_generator.py --help",
               "expect_exit": 0,
               "kind": "smoke"
+            },
+            {
+              "cmd": "python3 product-team/agile-product-owner/skills/agile-product-owner/scripts/user_story_generator.py --sample",
+              "expect_exit": 0,
+              "kind": "sample"
             }
           ]
         }
@@ -77,7 +82,7 @@
     {
       "name": "code-to-prd",
       "path": "product-team/code-to-prd/skills/code-to-prd",
-      "description": "Reverse-engineer any codebase into a complete Product Requirements Document (PRD). Analyzes routes, components, state management, API integrations, and user interactions to produce business-readable documentation detailed enough for engineers or AI agents to fully reconstruct every page and endpoint. Works with frontend frameworks (React, Vue, Angular, Svelte, Next.js, Nuxt), backend frameworks (NestJS, Django, Express, FastAPI), and fullstack applications. Use when users mention: generate PRD, reverse-engineer requirements, code to documentation, extract product specs from code, document page",
+      "description": "Reverse-engineer any codebase into a complete Product Requirements Document (PRD). Analyzes routes, components, state management, API integrations, and user interactions to produce business-readable documentation detailed enough for engineers or AI agents to fully reconstruct every page and endpoint. Works with frontend frameworks (React, Vue, Angular, Svelte, Next.js, Nuxt), backend frameworks (NestJS, Django, Express, FastAPI), and fullstack applications. Use when users mention: generate PRD, reverse-engineer requirements, code to documentation, extract product specs from code, document \u2026",
       "tools": [
         {
           "script": "product-team/code-to-prd/skills/code-to-prd/scripts/codebase_analyzer.py",
@@ -161,7 +166,7 @@
     {
       "name": "competitive-teardown",
       "path": "product-team/skills/competitive-teardown",
-      "description": "Analyzes competitor products and companies by synthesizing data from pricing pages, app store reviews, job postings, SEO signals, and social media into structured competitive intelligence. Produces feature comparison matrices scored across 12 dimensions, SWOT analyses, positioning maps, UX audits, pricing model breakdowns, action item roadmaps, and stakeholder presentation templates. Use when conducting competitor analysis, comparing products against competitors, researching the competitive landscape, building battle cards for sales, preparing for a product strategy or roadmap session, respond",
+      "description": "Analyzes competitor products and companies by synthesizing data from pricing pages, app store reviews, job postings, SEO signals, and social media into structured competitive intelligence. Produces feature comparison matrices scored across 12 dimensions, SWOT analyses, positioning maps, UX audits, pricing model breakdowns, action item roadmaps, and stakeholder presentation templates. Use when conducting competitor analysis, comparing products against competitors, researching the competitive landscape, building battle cards for sales, preparing for a product strategy or roadmap session \u2026",
       "tools": [
         {
           "script": "product-team/skills/competitive-teardown/scripts/competitive_matrix_builder.py",
@@ -223,7 +228,7 @@
     {
       "name": "landing-page-generator",
       "path": "product-team/skills/landing-page-generator",
-      "description": "Generates high-converting landing pages as complete Next.js/React (TSX) components with Tailwind CSS. Creates hero sections, feature grids, pricing tables, FAQ accordions, testimonial blocks, and CTA sections using proven copy frameworks (PAS, AIDA, BAB). Outputs SEO meta tags, structured data, and performance-optimised code targeting Core Web Vitals (LCP < 1s, CLS < 0.1). Use when the user asks to create a landing page, marketing page, homepage, single-page site, lead capture page, campaign page, promo page, or conversion-optimised web page \u2014 or when they want to A/B test landing page variant",
+      "description": "Generates high-converting landing pages as complete Next.js/React (TSX) components with Tailwind CSS. Creates hero sections, feature grids, pricing tables, FAQ accordions, testimonial blocks, and CTA sections using proven copy frameworks (PAS, AIDA, BAB). Outputs SEO meta tags, structured data, and performance-optimised code targeting Core Web Vitals (LCP < 1s, CLS < 0.1). Use when the user asks to create a landing page, marketing page, homepage, single-page site, lead capture page, campaign page, promo page, or conversion-optimised web page \u2014 or when they want to A/B test landing page \u2026",
       "tools": [
         {
           "script": "product-team/skills/landing-page-generator/scripts/landing_page_scaffolder.py",
@@ -357,16 +362,72 @@
     {
       "name": "product-skills",
       "path": "product-team/skills/product-skills",
-      "description": "Router/index for the 12 product skills bundled in this plugin (RICE prioritization, OKRs, UX research, design tokens, competitive teardown, analytics, experiments, discovery, roadmaps, spec-to-repo, landing pages, SaaS scaffolding). Use when a product request doesn't obviously match one skill and you need to pick the right one (e.g., 'help me prioritize features', 'plan a product experiment').",
-      "tools": [],
+      "description": "Use when coordinating product work across the 12 bundled product sub-skills (RICE, OKRs, UX research, design tokens, competitive teardown, analytics, experiments, discovery, roadmaps, spec-to-repo, landing pages, SaaS scaffolding) or the 4 standalone product-team plugins (user stories, Apple HIG, code-to-PRD, research summarizer). Triggers on 'help me prioritize', 'plan a product experiment', 'we ship features nobody uses', 'run the discovery loop', 'is our OST sound'. Forks context to route to one sub-skill via a deterministic signal router and returns a digest; can also drive a \u2026",
+      "tools": [
+        {
+          "script": "product-team/skills/product-skills/scripts/discovery_cadence_tracker.py",
+          "wired": true,
+          "supports_sample": true,
+          "verification": [
+            {
+              "cmd": "python3 product-team/skills/product-skills/scripts/discovery_cadence_tracker.py --help",
+              "expect_exit": 0,
+              "kind": "smoke"
+            },
+            {
+              "cmd": "python3 product-team/skills/product-skills/scripts/discovery_cadence_tracker.py --sample",
+              "expect_exit": 0,
+              "kind": "sample"
+            }
+          ]
+        },
+        {
+          "script": "product-team/skills/product-skills/scripts/ost_linter.py",
+          "wired": true,
+          "supports_sample": true,
+          "verification": [
+            {
+              "cmd": "python3 product-team/skills/product-skills/scripts/ost_linter.py --help",
+              "expect_exit": 0,
+              "kind": "smoke"
+            },
+            {
+              "cmd": "python3 product-team/skills/product-skills/scripts/ost_linter.py --sample",
+              "expect_exit": 0,
+              "kind": "sample"
+            }
+          ]
+        },
+        {
+          "script": "product-team/skills/product-skills/scripts/product_goal_router.py",
+          "wired": true,
+          "supports_sample": true,
+          "verification": [
+            {
+              "cmd": "python3 product-team/skills/product-skills/scripts/product_goal_router.py --help",
+              "expect_exit": 0,
+              "kind": "smoke"
+            },
+            {
+              "cmd": "python3 product-team/skills/product-skills/scripts/product_goal_router.py --sample",
+              "expect_exit": 0,
+              "kind": "sample"
+            }
+          ]
+        }
+      ],
       "agentic_signals": {
         "goal_intake": true,
-        "refusal_gate": false,
-        "verification": false,
-        "loop_discipline": false,
-        "close_out": false
+        "refusal_gate": true,
+        "verification": true,
+        "loop_discipline": true,
+        "close_out": true
       },
-      "references": []
+      "references": [
+        "ai_product_evals.md",
+        "continuous_discovery_canon.md",
+        "product_operating_model.md"
+      ]
     },
     {
       "name": "product-strategist",
@@ -531,12 +592,17 @@
         {
           "script": "product-team/skills/ux-researcher-designer/scripts/persona_generator.py",
           "wired": true,
-          "supports_sample": false,
+          "supports_sample": true,
           "verification": [
             {
               "cmd": "python3 product-team/skills/ux-researcher-designer/scripts/persona_generator.py --help",
               "expect_exit": 0,
               "kind": "smoke"
+            },
+            {
+              "cmd": "python3 product-team/skills/ux-researcher-designer/scripts/persona_generator.py --sample",
+              "expect_exit": 0,
+              "kind": "sample"
             }
           ]
         }
